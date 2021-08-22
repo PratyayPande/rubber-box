@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <iomanip>
 #define lli long long int
 #define ull unsigned long long
 using namespace std;
@@ -51,16 +52,25 @@ auto cmp = [](pair<int,int> left, pair<int,int> right)
 {
     return(left.second < right.second);
 };
-int a[MX];
-int sieve[MX+1];
+long x[MX];
 int main()
 {
     ios_base::sync_with_stdio(0); cin.tie(0); int t = 1;
-    //cin >> t;
+    cin >> t;
     while(t--)
     {
-
-
+		int n;
+		cin >> n;
+		long int sm = 0;
+		for(int i=0;i<n;i++)
+		{
+			cin >> x[i];
+			sm += x[i];
+		}
+		sort(x,x+n);
+		sm -= x[n-1];
+		double fin = x[n-1] + (double)sm/(n-1);
+		cout << std::setprecision(12) << fin << "\n";
     }
     return 0;
 }

@@ -1,3 +1,4 @@
+// given an integer n and an array a of size n-1 containing integers from the range [1,n]. Find the number in the range [1,n] that is not in a.
 #include <bits/stdc++.h>
 #define lli long long int
 #define ull unsigned long long
@@ -51,7 +52,7 @@ auto cmp = [](pair<int,int> left, pair<int,int> right)
 {
     return(left.second < right.second);
 };
-int a[MX];
+int a[2*MX-1];
 int sieve[MX+1];
 int main()
 {
@@ -59,8 +60,17 @@ int main()
     //cin >> t;
     while(t--)
     {
-
-
+		int n;
+		cin >> n;
+		int ms = 1;
+		for(int i=2;i<=n;i++)
+			ms ^= i;
+		for(int i=0;i<n-1;i++)
+		{
+			cin >> a[i];
+			ms ^= a[i];
+		}
+		cout << "Missing number = " << ms << "\n";
     }
     return 0;
 }

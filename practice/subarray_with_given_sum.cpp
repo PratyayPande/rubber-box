@@ -1,3 +1,4 @@
+// Given an unsorted array a of size a that contains only non-negative integers, find a continuous sub-array which adds to a given number referred to as target.
 #include <bits/stdc++.h>
 #define lli long long int
 #define ull unsigned long long
@@ -59,8 +60,27 @@ int main()
     //cin >> t;
     while(t--)
     {
-
-
+		int n,target;
+		cin >> n;
+		cin >> target;
+		for(int i=0;i<n;i++)
+			cin >> a[i];
+		int sm=0,l=0,r=0;
+		while(l <= r && r < n && sm != target)
+		{
+			if(sm < target)
+			{
+				sm += a[r++];
+			}
+			else if(sm > target)
+			{
+				sm -= a[l++];
+			}
+		}
+		if(r == n && sm != target)
+			cout << -1 << "\n";
+		else
+			cout << l+1 << " " << r << "\n";
     }
     return 0;
 }
